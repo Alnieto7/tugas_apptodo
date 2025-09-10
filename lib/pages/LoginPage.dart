@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext index) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
             CustomButton(
               text: "Login",
               onPressed: () {
-                Get.toNamed(Routes.DASHBOARD, arguments: context);
+                Get.offAllNamed(Routes.DASHBOARD, arguments: index);
               },
             ),
           ],
