@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:tugas_apptodo/routes/routes.dart';
 import '../component/custom_button.dart';
 import '../component/custom_textfield.dart';
 
@@ -23,7 +25,7 @@ class LoginPage extends StatelessWidget {
             CustomButton(
               text: "Login",
               onPressed: () {
-                // koe implementasi login nang kene
+                Get.toNamed(Routes.DASHBOARD, arguments: context);
               },
             ),
           ],
