@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
             CustomButton(
               text: "Login",
               onPressed: () {
-                Get.offAllNamed(Routes.DASHBOARD, arguments: index);
+                Get.offAllNamed(Routes.dashboard, arguments: index);
               },
             ),
           ],
