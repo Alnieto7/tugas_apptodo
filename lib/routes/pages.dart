@@ -10,9 +10,9 @@ import '../bindings/home_binding.dart';
 
 class AppPages {
 static final pages = [
-GetPage(name: Routes.LOGIN, page: () => LoginPage(), binding: AuthBinding()),
-GetPage(name: Routes.DASHBOARD, page: () => DashboardPage(), binding: HomeBinding()),
-GetPage(name: Routes.ADD_TODO, page: () => AddTodoPage(), binding: HomeBinding()),
-GetPage(name: Routes.HOME, page: () => HomePage(), binding: HomeBinding()),
+GetPage(name: Routes.login, page: () => LoginPage(), binding: AuthBinding()),
+GetPage(name: Routes.dashboard, page: () => DashboardPage(), binding: HomeBinding()),
+GetPage(name: Routes.addtodo, page: () => AddTodoPage(), binding: HomeBinding()),
+GetPage(name: Routes.home, page: () => HomePage(), binding: HomeBinding()),
 ];
 }

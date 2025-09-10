@@ -1,8 +1,10 @@
 class Routes {
-static const LOGIN = '/login';
-static const DASHBOARD = '/dashboard';
-static const HOME = '/home';
-static const ADD_TODO = '/add';
-static const HISTORY = '/history';
-static const PROFILE = '/profile';
+static const login = '/login';
+static const dashboard = '/dashboard';
+static const home = '/home';
+static const addtodo = '/add';
+static const history = '/history';
+static const profile = '/profile';
 }
+
+//beny kencot
