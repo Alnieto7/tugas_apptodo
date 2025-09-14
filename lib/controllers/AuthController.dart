@@ -5,30 +5,29 @@ import 'package:tugas_apptodo/pages/LoginPage.dart';
 
 
 class AuthController extends GetxController {
-  final usernameC = TextEditingController();
-  final passwordC = TextEditingController();
+  final username = TextEditingController();
+  final password = TextEditingController();
 
   var isLoggedIn = false.obs;
 
   void login() {
-    if (usernameC.text == "admin" && passwordC.text == "1234") {
+    if (username.text == "admin" && password.text == "1234") {
       isLoggedIn.value = true;
       Get.offAll(() => const DashboardPage());
-      Get.snackbar("Login Berhasil", "Selamat datang ${usernameC.text}",
+      Get.snackbar("Login Berhasil", "Selamat datang ${username.text}",
           snackPosition: SnackPosition.BOTTOM);
     } else {
       Get.offAll(() => LoginPage());
       Get.snackbar("Login Gagal", "Username atau password salah",
           backgroundColor: Colors.red, colorText: Colors.white,
           );
-
     }
   }
 
   @override
   void onClose() {
-    usernameC.dispose();
-    passwordC.dispose();
+    username.dispose();
+    password.dispose();
     super.onClose();
   }
 }

@@ -15,6 +15,18 @@ class TodoController extends GetxController {
     todos.insert(0, todo);
   }
 
+  void saveTodo(String title, String description, String category) {
+    if (title.isNotEmpty && description.isNotEmpty) {
+      addTodo(title, description, category);
+      Get.back();
+      Get.snackbar("Sukses", "Todo berhasil ditambahkan",
+          snackPosition: SnackPosition.BOTTOM);
+    } else {
+      Get.snackbar("Error", "Judul dan Deskripsi tidak boleh kosong",
+          snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
   void toggleDone(String id) {
     final idx = todos.indexWhere((t) => t.id == id);
     if (idx >= 0) {
