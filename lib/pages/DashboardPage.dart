@@ -16,7 +16,6 @@ class _DashboardPageState extends State<DashboardPage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = const [
-    HomePage(),
     HistoryPage(),
     ProfilePage(),
 

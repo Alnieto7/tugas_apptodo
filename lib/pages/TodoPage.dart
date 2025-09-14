@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tugas_apptodo/color/app_colors.dart';
 import '../component/custom_button.dart';
 import '../component/custom_textfield.dart';
-
+import '../controllers/TodoController.dart';
 
 class AddTodoPage extends StatefulWidget {
   const AddTodoPage({super.key});
@@ -15,6 +16,8 @@ class _AddTodoPageState extends State<AddTodoPage> {
   final TextEditingController titleC = TextEditingController();
   final TextEditingController descC = TextEditingController();
   String selectedCategory = "Sekolah";
+
+  final TodoController todoController = Get.find<TodoController>();
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +58,17 @@ class _AddTodoPageState extends State<AddTodoPage> {
             CustomButton(
               text: "Simpan",
               onPressed: () {
-                // nanti ini dipanggil TodoController (orang 2)
-                Navigator.pop(context);
+                if (titleC.text.isNotEmpty && descC.text.isNotEmpty) {
+                  todoController.addTodo(
+                    titleC.text,
+                    descC.text,
+                    selectedCategory,
+                  );
+                  Get.back();
+                } else {
+                  Get.snackbar("Error", "Judul dan Deskripsi harus diisi",
+                      snackPosition: SnackPosition.BOTTOM);
+                }
               },
             ),
           ],
