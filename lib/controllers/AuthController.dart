@@ -10,7 +10,7 @@ class AuthController extends GetxController {
   var isLoggedIn = false.obs;
 
   void login() {
-    if (username.text == "admin" && password.text == "1234") {
+    if (username.text == "awantito" && password.text == "1234") {
       isLoggedIn.value = true;
       Get.offAll(() => const DashboardPage());
       Get.snackbar(

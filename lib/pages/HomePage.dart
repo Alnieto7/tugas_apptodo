@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tugas_apptodo/controllers/TodoController.dart';
+import 'package:tugas_apptodo/pages/TodoPage.dart';
 import 'package:tugas_apptodo/routes/routes.dart';
 import '../color/app_colors.dart';
 
@@ -54,25 +55,24 @@ class HomePage extends StatelessWidget {
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    // Edit Button
+                  
                     IconButton(
                       icon: const Icon(Icons.edit, color: Colors.blue),
                       onPressed: () {
-                        Get.toNamed(
-                          AppRoutes.addtodo,
-                          arguments: {
-                            'isEdit': true,
-                            'todoId': todo.id,
-                            'title': todo.title,
-                            'description': todo.description,
-                            'category': todo.category,
-                            'date': todo.date,
-                            'time': todo.time,
-                          },
+                        Get.to(
+                          () => AddTodoPage(
+                            isEdit: true, 
+                            todoId: todo.id,
+                            title: todo.title,
+                            description: todo.description,
+                            category: todo.category,
+                            date: todo.date,
+                            time: todo.time,
+                          ),
                         );
                       },
                     ),
-                    // Delete Button
+                   
                     IconButton(
                       icon: const Icon(Icons.delete, color: Colors.red),
                       onPressed: () {
@@ -90,7 +90,7 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.secondary,
         onPressed: () {
-          Get.toNamed(AppRoutes.addtodo); // tambah todo baru
+          Get.toNamed(AppRoutes.addtodo);
         },
         child: const Icon(Icons.add, color: Colors.white),
       ),
