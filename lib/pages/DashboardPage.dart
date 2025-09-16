@@ -15,11 +15,11 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = const [
+  // Harus ada 3 halaman (Home, History, Profile)
+  final List<Widget> _pages =  [
+    HomePage(),
     HistoryPage(),
     ProfilePage(),
-
-    //gae pages e wan
   ];
 
   @override

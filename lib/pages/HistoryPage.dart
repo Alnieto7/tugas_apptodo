@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tugas_apptodo/color/app_colors.dart';
+import 'package:tugas_apptodo/controllers/TodoController.dart';
 import '../component/custom_card.dart';
 
 
@@ -8,25 +10,32 @@ class HistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final completedTodos = [
-      {"title": "Belajar Git", "desc": "Push ke GitHub", "cat": "Sekolah"},
-    ];
+    final todoC = Get.find<TodoController>();
 
     return Scaffold(
       appBar: AppBar(
         title: const Text("History"),
         backgroundColor: AppColors.primary,
       ),
-      body: ListView(
-        children: completedTodos.map((todo) {
-          return CustomCard(
-            title: todo["title"]!,
-            description: todo["desc"]!,
-            category: todo["cat"]!,
-            isCompleted: true,
-          );
-        }).toList(),
-      ),
+      body: Obx(() {
+        final done = todoC.doneTodos;
+        if (done.isEmpty) {
+          return const Center(child: Text("Belum ada todo yang selesai"));
+        }
+        return ListView.builder(
+          itemCount: done.length,
+          itemBuilder: (context, index) {
+            final todo = done[index];
+            return CustomCard(
+              title: todo.title,
+              description: todo.description,
+              category: todo.category,
+              isCompleted: true,
+              onTap: () => todoC.toggleDone(todo.id),
+            );
+          },
+        );
+      }),
     );
   }
 }
