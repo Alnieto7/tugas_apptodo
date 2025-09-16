@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/get_core.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get.dart';
 import 'package:tugas_apptodo/color/theme.dart';
 import 'package:tugas_apptodo/pages/DashboardPage.dart';
+import 'package:tugas_apptodo/pages/HomePage.dart';
 import 'package:tugas_apptodo/pages/LoginPage.dart';
+import 'package:tugas_apptodo/pages/TodoPage.dart';
 import 'bindings/auth_binding.dart';
 import 'bindings/home_binding.dart';
 
@@ -21,19 +21,26 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Todo List App',
       theme: AppTheme.lightTheme,
-      home:  LoginPage(),
-      initialBinding: AuthBinding(),
+      initialRoute: '/login',          // <- pakai initialRoute, bukan home:
+      initialBinding: AuthBinding(),   // <- inisialisasi controller Auth sekali
       getPages: [
-        GetPage(
-          name: '/dashboard',
-          page: () => DashboardPage(),
-          binding: HomeBinding(),
-        ),
         GetPage(
           name: '/login',
           page: () => LoginPage(),
-          binding: AuthBinding(),
         ),
+        GetPage(
+          name: '/dashboard',
+          page: () =>  DashboardPage(),
+          binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/home',
+           page: () => HomePage()
+           ),
+           GetPage(
+            name: '/add', 
+           page: () => AddTodoPage()
+           )
       ],
     );
   }

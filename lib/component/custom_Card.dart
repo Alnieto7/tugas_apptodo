@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:tugas_apptodo/color/app_colors.dart';
 
-
 class CustomCard extends StatelessWidget {
   final String title;
   final String description;
   final String category;
   final VoidCallback? onTap;
   final bool isCompleted;
+  final String? image; // ubah ke String? biar fleksibel
 
   const CustomCard({
     super.key,
+    this.image,
     required this.title,
     required this.description,
     required this.category,
@@ -28,6 +29,17 @@ class CustomCard extends StatelessWidget {
       ),
       child: ListTile(
         onTap: onTap,
+        leading: image != null
+            ? ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  image!,
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.cover,
+                ),
+              )
+            : const Icon(Icons.person, size: 40, color: Colors.grey), // placeholder
         title: Text(
           title,
           style: TextStyle(
