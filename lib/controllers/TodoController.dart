@@ -11,8 +11,8 @@ class TodoController extends GetxController {
       title: title,
       description: description,
       category: category,
-      date: date, // 🆕 wajib
-      time: time, // 🆕 wajib
+      date: date, 
+      time: time, 
     );
     todos.insert(0, todo);
   }

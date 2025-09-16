@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';   // 🆕 ini yang belum ada
+import 'package:intl/intl.dart';
 import 'package:tugas_apptodo/color/app_colors.dart';
 import 'package:tugas_apptodo/controllers/TodoController.dart';
 import '../component/custom_button.dart';
@@ -126,14 +126,14 @@ class _AddTodoPageState extends State<AddTodoPage> {
             ),
             const SizedBox(height: 12),
 
-            // Input tanggal
+            
             ListTile(
               leading: const Icon(Icons.calendar_today, color: AppColors.primary),
               title: Text("Tanggal: $selectedDate"),
               onTap: pickDate,
             ),
 
-            // Input jam
+            
             ListTile(
               leading: const Icon(Icons.access_time, color: AppColors.primary),
               title: Text("Jam: $selectedTime"),

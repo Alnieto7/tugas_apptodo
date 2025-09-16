@@ -6,7 +6,6 @@ class AppTheme {
     useMaterial3: true,
     primaryColor: AppColors.primary,
 
-    // AppBar
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.primary,
       foregroundColor: AppColors.white,
@@ -19,7 +18,6 @@ class AppTheme {
       ),
     ),
 
-    // Bottom Navigation Bar
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppColors.primary,
       selectedItemColor: AppColors.secondary,
@@ -27,7 +25,6 @@ class AppTheme {
       type: BottomNavigationBarType.fixed,
     ),
 
-    // Elevated Button
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary,
@@ -40,7 +37,6 @@ class AppTheme {
       ),
     ),
 
-    // Input Field (TextField / TextFormField)
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: const TextStyle(color: AppColors.secondary),
       focusedBorder: OutlineInputBorder(

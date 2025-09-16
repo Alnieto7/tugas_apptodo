@@ -15,7 +15,6 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   int _currentIndex = 0;
 
-  // Harus ada 3 halaman (Home, History, Profile)
   final List<Widget> _pages =  [
     HomePage(),
     HistoryPage(),
