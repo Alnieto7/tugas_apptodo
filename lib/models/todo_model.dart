@@ -4,8 +4,8 @@ class TodoModel {
   final String description;
   final String category;
   final bool isDone;
-  final String date; // 🆕 tanggal aktivitas
-  final String time; // 🆕 jam aktivitas
+  final String date; 
+  final String time; 
 
   TodoModel({
     required this.id,

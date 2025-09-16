@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:tugas_apptodo/pages/DashboardPage.dart';
 import 'package:tugas_apptodo/pages/LoginPage.dart';
 
-
 class AuthController extends GetxController {
   final username = TextEditingController();
   final password = TextEditingController();
@@ -14,13 +13,18 @@ class AuthController extends GetxController {
     if (username.text == "admin" && password.text == "1234") {
       isLoggedIn.value = true;
       Get.offAll(() => const DashboardPage());
-      Get.snackbar("Login Berhasil", "Selamat datang ${username.text}",
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        "Login Berhasil",
+        "Selamat datang ${username.text}",
+        snackPosition: SnackPosition.BOTTOM,
+      );
     } else {
-      Get.offAll(() => LoginPage());
-      Get.snackbar("Login Gagal", "Username atau password salah",
-          backgroundColor: Colors.red, colorText: Colors.white,
-          );
+      Get.snackbar(
+        "Login Gagal",
+        "Username atau password salah",
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
     }
   }
 

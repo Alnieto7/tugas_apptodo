@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tugas_apptodo/controllers/AuthController.dart';
-import 'package:tugas_apptodo/routes/routes.dart';
 import '../component/custom_button.dart';
 import '../component/custom_textfield.dart';
 import '../color/app_colors.dart';
 
 class LoginPage extends StatelessWidget {
-  final username = TextEditingController();
-  final password = TextEditingController();
-  final AuthController authController = Get.find();
+  final AuthController authController = Get.put(AuthController());
 
   LoginPage({super.key});
 
@@ -22,7 +19,7 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo di tengah
+              // Logo
               const CircleAvatar(
                 radius: 48,
                 backgroundImage: AssetImage("assets/images/list.png"),
@@ -43,13 +40,16 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 32),
 
               // Input Username
-              CustomTextField(label: "Username", controller: username),
+              CustomTextField(
+                label: "Username",
+                controller: authController.username,
+              ),
               const SizedBox(height: 16),
 
               // Input Password
               CustomTextField(
                 label: "Password",
-                controller: password,
+                controller: authController.password,
                 isPassword: true,
               ),
               const SizedBox(height: 24),
@@ -58,17 +58,7 @@ class LoginPage extends StatelessWidget {
               CustomButton(
                 text: "Login",
                 onPressed: () {
-                  // contoh login sederhana, nanti bisa validasi di AuthController
-                  if (username.text == "admin" && password.text == "1234") {
-                    Get.offAllNamed(AppRoutes.dashboard);
-                  } else {
-                    Get.snackbar(
-                      "Login Gagal",
-                      "Username atau password salah",
-                      backgroundColor: Colors.red,
-                      colorText: Colors.white,
-                    );
-                  }
+                  authController.login();
                 },
               ),
 
@@ -81,7 +71,7 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 12),
 
-              // Icon Sosial Media (Google, Apple, Edge)
+              // Icon Sosial Media (contoh saja)
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -89,7 +79,7 @@ class LoginPage extends StatelessWidget {
                     icon: Image.asset("assets/icons/google.png"),
                     iconSize: 40,
                     onPressed: () {
-                      Get.toNamed(AppRoutes.dashboard); // contoh route
+                      Get.snackbar("Info", "Login Google belum tersedia");
                     },
                   ),
                   const SizedBox(width: 16),
@@ -97,7 +87,7 @@ class LoginPage extends StatelessWidget {
                     icon: Image.asset("assets/icons/apple.png"),
                     iconSize: 40,
                     onPressed: () {
-                      Get.toNamed(AppRoutes.dashboard); // contoh route
+                      Get.snackbar("Info", "Login Apple belum tersedia");
                     },
                   ),
                   const SizedBox(width: 16),
@@ -105,7 +95,7 @@ class LoginPage extends StatelessWidget {
                     icon: Image.asset("assets/icons/edge.png"),
                     iconSize: 40,
                     onPressed: () {
-                      Get.toNamed(AppRoutes.dashboard); // contoh route
+                      Get.snackbar("Info", "Login Edge belum tersedia");
                     },
                   ),
                 ],
