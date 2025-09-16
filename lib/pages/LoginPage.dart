@@ -19,7 +19,6 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo
               const CircleAvatar(
                 radius: 48,
                 backgroundImage: AssetImage("assets/images/list.png"),
@@ -27,7 +26,6 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-              // Welcome text
               const Text(
                 "Selamat datang di App Todo List",
                 style: TextStyle(
@@ -39,14 +37,12 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 32),
 
-              // Input Username
               CustomTextField(
                 label: "Username",
                 controller: authController.username,
               ),
               const SizedBox(height: 16),
 
-              // Input Password
               CustomTextField(
                 label: "Password",
                 controller: authController.password,
@@ -54,7 +50,6 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 24),
 
-              // Tombol Login
               CustomButton(
                 text: "Login",
                 onPressed: () {
@@ -64,39 +59,42 @@ class LoginPage extends StatelessWidget {
 
               const SizedBox(height: 32),
 
-              // Text "Login melalui"
               const Text(
                 "Login melalui : ",
                 style: TextStyle(fontSize: 14, color: Colors.grey),
               ),
               const SizedBox(height: 12),
 
-              // Icon Sosial Media (contoh saja)
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  IconButton(
-                    icon: Image.asset("assets/icons/google.png"),
-                    iconSize: 40,
-                    onPressed: () {
-                      Get.snackbar("Info", "Login Google belum tersedia");
-                    },
+                  GestureDetector(
+                    onTap: () => Get.snackbar("Info", "Login Google belum tersedia"),
+                    child: Image.asset(
+                      "assets/images/google.png",
+                      width: 40,
+                      height: 40,
+                    ),
                   ),
-                  const SizedBox(width: 16),
-                  IconButton(
-                    icon: Image.asset("assets/icons/apple.png"),
-                    iconSize: 40,
-                    onPressed: () {
-                      Get.snackbar("Info", "Login Apple belum tersedia");
-                    },
+                  const SizedBox(width: 24),
+
+                  GestureDetector(
+                    onTap: () => Get.snackbar("Info", "Login Apple belum tersedia"),
+                    child: Image.asset(
+                      "assets/images/apple.png",
+                      width: 50,
+                      height: 50,
+                    ),
                   ),
-                  const SizedBox(width: 16),
-                  IconButton(
-                    icon: Image.asset("assets/icons/edge.png"),
-                    iconSize: 40,
-                    onPressed: () {
-                      Get.snackbar("Info", "Login Edge belum tersedia");
-                    },
+                  const SizedBox(width: 24),
+
+                  GestureDetector(
+                    onTap: () => Get.snackbar("Info", "Login Edge belum tersedia"),
+                    child: Image.asset(
+                      "assets/images/edgee.jpeg",
+                      width: 55,
+                      height: 55,
+                    ),
                   ),
                 ],
               ),

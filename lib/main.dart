@@ -18,29 +18,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Todo List App',
-      theme: AppTheme.lightTheme,
-      initialRoute: '/login',          // <- pakai initialRoute, bukan home:
-      initialBinding: AuthBinding(),   // <- inisialisasi controller Auth sekali
-      getPages: [
-        GetPage(
-          name: '/login',
-          page: () => LoginPage(),
-        ),
-        GetPage(
-          name: '/dashboard',
-          page: () =>  DashboardPage(),
-          binding: HomeBinding(),
-        ),
-        GetPage(
-          name: '/home',
-           page: () => HomePage()
-           ),
-           GetPage(
-            name: '/add', 
-           page: () => AddTodoPage()
-           )
+  debugShowCheckedModeBanner: false,
+  title: 'Todo List App',
+  theme: AppTheme.lightTheme,
+  initialRoute: '/login',
+  initialBinding: BindingsBuilder(() {
+    AuthBinding().dependencies();
+    HomeBinding().dependencies();
+  }),
+  getPages: [
+    GetPage(name: '/login', page: () => LoginPage()),
+    GetPage(name: '/dashboard', page: () => DashboardPage()),
+    GetPage(name: '/home', page: () => HomePage()),
+    GetPage(name: '/add', page: () => AddTodoPage()),
       ],
     );
   }

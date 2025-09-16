@@ -7,7 +7,7 @@ class CustomCard extends StatelessWidget {
   final String category;
   final VoidCallback? onTap;
   final bool isCompleted;
-  final String? image; // ubah ke String? biar fleksibel
+  final String? image; 
 
   const CustomCard({
     super.key,
@@ -39,7 +39,7 @@ class CustomCard extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               )
-            : const Icon(Icons.person, size: 40, color: Colors.grey), // placeholder
+            : const Icon(Icons.person, size: 40, color: Colors.grey), 
         title: Text(
           title,
           style: TextStyle(
