@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tugas_apptodo/pages/DashboardPage.dart';
 import 'package:tugas_apptodo/pages/LoginPage.dart';
+import 'package:tugas_apptodo/routes/routes.dart';
 
 class AuthController extends GetxController {
   final username = TextEditingController();
@@ -12,7 +13,7 @@ class AuthController extends GetxController {
   void login() {
     if (username.text == "awantito" && password.text == "1234") {
       isLoggedIn.value = true;
-      Get.offAll(() => const DashboardPage());
+      Get.offAllNamed(AppRoutes.dashboard);
       Get.snackbar(
         "Login Berhasil",
         "Selamat datang ${username.text}",
