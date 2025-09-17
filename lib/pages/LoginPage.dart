@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 20),
 
               const Text(
-                "Selamat datang di App Todo List",
+                "WELCOME",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

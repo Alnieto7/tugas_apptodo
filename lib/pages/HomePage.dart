@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Obx(() {
         if (todoC.todos.isEmpty) {
-          return const Center(child: Text("Belum ada todo"));
+          return const Center(child: Text("Belum ada tugas"));
         }
         return ListView.builder(
           itemCount: todoC.todos.length,
@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
                     IconButton(
                       icon: const Icon(Icons.delete, color: Colors.red),
                       onPressed: () {
-                        todoC.deleteTodo(todo.id);
+                        todoC.deleteDone(todo.id);
                       },
                     ),
                   ],
