@@ -70,7 +70,6 @@ class TodoController extends GetxController {
 
   void deleteDone(String id) {
     final idx = todos.indexWhere((t) => t.id == id);
-
     if (idx >= 0) {
       Get.defaultDialog(
         title: "Konfirmasi",

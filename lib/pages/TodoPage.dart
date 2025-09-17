@@ -126,14 +126,14 @@ class _AddTodoPageState extends State<AddTodoPage> {
             ),
             const SizedBox(height: 12),
 
-            // Input tanggal
+          
             ListTile(
               leading: const Icon(Icons.calendar_today, color: AppColors.primary),
               title: Text("Tanggal: $selectedDate"),
               onTap: pickDate,
             ),
 
-            // Input jam
+          
             ListTile(
               leading: const Icon(Icons.access_time, color: AppColors.primary),
               title: Text("Jam: $selectedTime"),

@@ -74,9 +74,15 @@ class HomePage extends StatelessWidget {
                     ),
                    
                     IconButton(
-                      icon: const Icon(Icons.delete, color: Colors.red),
+                      icon: const Icon(Icons.edit, color: Colors.blue),
                       onPressed: () {
-                        todoC.deleteDone(todo.id);
+                        Get.toNamed(
+                          AppRoutes.addtodo,
+                          arguments: {
+                            "isEdit": true,
+                            "todoId": todo.id,
+                          },
+                        );
                       },
                     ),
                   ],
