@@ -59,23 +59,6 @@ class HomePage extends StatelessWidget {
                     IconButton(
                       icon: const Icon(Icons.edit, color: Colors.blue),
                       onPressed: () {
-                        Get.to(
-                          () => AddTodoPage(
-                            isEdit: true, 
-                            todoId: todo.id,
-                            title: todo.title,
-                            description: todo.description,
-                            category: todo.category,
-                            date: todo.date,
-                            time: todo.time,
-                          ),
-                        );
-                      },
-                    ),
-                   
-                    IconButton(
-                      icon: const Icon(Icons.edit, color: Colors.blue),
-                      onPressed: () {
                         Get.toNamed(
                           AppRoutes.addtodo,
                           arguments: {
@@ -83,6 +66,13 @@ class HomePage extends StatelessWidget {
                             "todoId": todo.id,
                           },
                         );
+                      },
+                    ),
+                   
+                    IconButton(
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                      onPressed: () {
+                        todoC.deleteDone(todo.id);
                       },
                     ),
                   ],
