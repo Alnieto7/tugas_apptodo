@@ -20,7 +20,7 @@ class HistoryPage extends StatelessWidget {
       body: Obx(() {
         final done = todoC.doneTodos;
         if (done.isEmpty) {
-          return const Center(child: Text("Belum ada todo yang selesai"));
+          return const Center(child: Text("Belum ada tugas selesai"));
         }
         return ListView.builder(
           itemCount: done.length,
