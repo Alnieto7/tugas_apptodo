@@ -39,13 +39,13 @@ class LoginPage extends StatelessWidget {
 
               CustomTextField(
                 label: "Username",
-                controller: authController.username,
+                controller: authController.usernameController,
               ),
               const SizedBox(height: 16),
 
               CustomTextField(
                 label: "Password",
-                controller: authController.password,
+                controller: authController.passwordController,
                 isPassword: true,
               ),
               const SizedBox(height: 24),

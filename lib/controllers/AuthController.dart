@@ -1,38 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tugas_apptodo/pages/DashboardPage.dart';
 import 'package:tugas_apptodo/pages/LoginPage.dart';
 import 'package:tugas_apptodo/routes/routes.dart';
 
 class AuthController extends GetxController {
-  final username = TextEditingController();
-  final password = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-  var isLoggedIn = false.obs;
-
-  void login() {
-    if (username.text == "awantito" && password.text == "1234") {
-      isLoggedIn.value = true;
+  login() async {
+    if (usernameController.text.toString() == "admin" && passwordController.text.toString() == "admin") {
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setString("username", usernameController.text.toString());
       Get.offAllNamed(AppRoutes.dashboard);
       Get.snackbar(
-        "Login Berhasil",
-        "Selamat datang ${username.text}",
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    } else {
+         "Login Berhasil",
+         "Selamat datang ${usernameController.text}",
+         snackPosition: SnackPosition.BOTTOM,
+        );
+    }
+    else {
       Get.snackbar(
-        "Login Gagal",
-        "Username atau password salah",
-        backgroundColor: Colors.red,
-        colorText: Colors.white,
-      );
+         "Login Gagal",
+         "Username atau password salah",
+         backgroundColor: Colors.red,
+         colorText: Colors.white,
+        );
     }
   }
+  // final username = TextEditingController();
+  // final password = TextEditingController();
 
-  @override
-  void onClose() {
-    username.dispose();
-    password.dispose();
-    super.onClose();
-  }
+  // var isLoggedIn = false.obs;
+
+  // void login() {
+  //   if (username.text == "awantito" && password.text == "1234") {
+  //     isLoggedIn.value = true;
+  //     Get.offAllNamed(AppRoutes.dashboard);
+  //     Get.snackbar(
+  //       "Login Berhasil",
+  //       "Selamat datang ${username.text}",
+  //       snackPosition: SnackPosition.BOTTOM,
+  //     );
+  //   } else {
+  //     Get.snackbar(
+  //       "Login Gagal",
+  //       "Username atau password salah",
+  //       backgroundColor: Colors.red,
+  //       colorText: Colors.white,
+  //     );
+  //   }
+  // }
+
+  // @override
+  // void onClose() {
+  //   username.dispose();
+  //   password.dispose();
+  //   super.onClose();
+  // }
 }
