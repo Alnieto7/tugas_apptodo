@@ -16,7 +16,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   final List<Map<String, String>> profiles = [
     {
-      'name': 'Tito',
+      'name': 'Salahaddin Alnieto R.',
       'email': 'alnieto7170@gmail.com',
       'class': '11 PPLG 2 (30)',
       'image': 'assets/images/tito.jpg',

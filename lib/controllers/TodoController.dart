@@ -79,7 +79,7 @@ class TodoController extends GetxController {
         confirmTextColor: Colors.white,
         onConfirm: () {
           todos.removeAt(idx);
-          Get.back(); 
+          Get.back();
           Get.snackbar(
             "Dihapus",
             "Todo selesai berhasil dihapus",
@@ -116,6 +116,11 @@ class TodoController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
+  }
+
+  var isMobile = true.obs;
+  void updateLayout(BoxConstraints constraints) {
+    isMobile.value = constraints.maxWidth < 600;
   }
 
   List<TodoModel> get doneTodos => todos.where((t) => t.isDone).toList();

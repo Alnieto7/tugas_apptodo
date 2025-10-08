@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tugas_apptodo/color/app_colors.dart';
-import 'package:tugas_apptodo/pages/HistoryPage.dart';
-import 'package:tugas_apptodo/pages/HomePage.dart';
+import 'package:tugas_apptodo/pages/history/HistoryMobile.dart';
+import 'package:tugas_apptodo/pages/history/HistoryPage.dart';
+import 'package:tugas_apptodo/pages/home/HomeMobile.dart';
 import 'package:tugas_apptodo/pages/ProfilPage.dart';
+import 'package:tugas_apptodo/pages/home/HomePage.dart';
 
 
 class DashboardPage extends StatefulWidget {
@@ -16,7 +18,7 @@ class _DashboardPageState extends State<DashboardPage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages =  [
-    HomePage(),
+    Homepage(),
     HistoryPage(),
     ProfilePage(),
   ];
