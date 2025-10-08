@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tugas_apptodo/controllers/TodoController.dart';
 import 'package:tugas_apptodo/routes/routes.dart';
-import '../color/app_colors.dart';
+import '../../color/app_colors.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomeMobile extends StatelessWidget {
+  const HomeMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
           return const Center(child: Text("Belum ada tugas"));
         }
 
-        // Urutkan: pending dulu, lalu done
+        
         final sortedTodos = [...todoC.pendingTodos, ...todoC.doneTodos];
 
         return ListView.builder(

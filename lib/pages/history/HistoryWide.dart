@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tugas_apptodo/color/app_colors.dart';
 import 'package:tugas_apptodo/controllers/TodoController.dart';
-import '../component/custom_card.dart';
+import '../../component/custom_card.dart';
 
 
-class HistoryPage extends StatelessWidget {
-  const HistoryPage({super.key});
+class HistoryWide extends StatelessWidget {
+  const HistoryWide({super.key});
 
   @override
   Widget build(BuildContext context) {
