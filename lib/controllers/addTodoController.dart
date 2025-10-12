@@ -4,11 +4,9 @@ import 'package:intl/intl.dart';
 import 'TodoController.dart';
 
 class AddTodoController extends GetxController {
-  // Controller untuk form
   final titleC = TextEditingController();
   final descC = TextEditingController();
 
-  // State
   var selectedCategory = "Sekolah".obs;
   var selectedDate = DateFormat('dd/MM/yyyy').format(DateTime.now()).obs;
   var selectedTime = DateFormat('HH:mm').format(DateTime.now()).obs;
@@ -33,7 +31,6 @@ class AddTodoController extends GetxController {
     }
   }
 
-  // Pick date
   Future<void> pickDate(BuildContext context) async {
     final picked = await showDatePicker(
       context: context,
@@ -46,7 +43,6 @@ class AddTodoController extends GetxController {
     }
   }
 
-  // Pick time
   Future<void> pickTime(BuildContext context) async {
     final picked = await showTimePicker(
       context: context,
@@ -58,7 +54,6 @@ class AddTodoController extends GetxController {
     }
   }
 
-  // Simpan / update
   void saveOrUpdate() {
     if (titleC.text.isNotEmpty && descC.text.isNotEmpty) {
       if (isEdit.value && todoId != null) {
@@ -88,7 +83,6 @@ class AddTodoController extends GetxController {
     }
   }
 
-  // Hapus todo
   void deleteTodo() {
     if (todoId != null) {
       todoC.deleteTodo(todoId!);
