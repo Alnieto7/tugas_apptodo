@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:tugas_apptodo/color/theme.dart';
 import 'package:tugas_apptodo/pages/DashboardPage.dart';
 import 'package:tugas_apptodo/pages/home/HomeMobile.dart';
-import 'package:tugas_apptodo/pages/LoginPage.dart';
+import 'package:tugas_apptodo/pages/login/LoginMobile.dart';
 import 'package:tugas_apptodo/pages/TodoPage.dart';
 import 'package:tugas_apptodo/routes/pages.dart';
 import 'package:tugas_apptodo/routes/routes.dart';

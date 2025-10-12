@@ -3,7 +3,7 @@ import 'package:tugas_apptodo/color/app_colors.dart';
 import 'package:tugas_apptodo/pages/history/HistoryMobile.dart';
 import 'package:tugas_apptodo/pages/history/HistoryPage.dart';
 import 'package:tugas_apptodo/pages/home/HomeMobile.dart';
-import 'package:tugas_apptodo/pages/ProfilPage.dart';
+import 'package:tugas_apptodo/pages/profile/ProfilPage.dart';
 import 'package:tugas_apptodo/pages/home/HomePage.dart';
 
 
