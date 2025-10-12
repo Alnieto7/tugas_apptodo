@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tugas_apptodo/controllers/AuthController.dart';
-import '../component/custom_button.dart';
-import '../component/custom_textfield.dart';
-import '../color/app_colors.dart';
+import '../../component/custom_button.dart';
+import '../../component/custom_textfield.dart';
+import '../../color/app_colors.dart';
 
-class LoginPage extends StatelessWidget {
-  final AuthController authController = Get.put(AuthController());
+class LoginMobile extends StatelessWidget {
+  final AuthController authController = Get.find<AuthController>();
 
-  LoginPage({super.key});
+  LoginMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
