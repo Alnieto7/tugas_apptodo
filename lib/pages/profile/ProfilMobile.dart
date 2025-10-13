@@ -3,14 +3,14 @@ import 'package:get/get.dart';
 import 'package:tugas_apptodo/color/app_colors.dart';
 import 'package:tugas_apptodo/controllers/ProfileController.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class ProfileMobile extends StatefulWidget {
+  const ProfileMobile({super.key});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<ProfileMobile> createState() => _ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfilePageState extends State<ProfileMobile> {
   final PageController _pageController = PageController();
   int _currentIndex = 0;
 

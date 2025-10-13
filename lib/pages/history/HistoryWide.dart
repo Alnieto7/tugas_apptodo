@@ -54,7 +54,7 @@ class HistoryWide extends StatelessWidget {
                       style: const TextStyle(fontSize: 14),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                    ),
+                    ), 
                     const SizedBox(height: 6),
                     Wrap(
                       spacing: 6,
