@@ -3,35 +3,12 @@ import 'package:get/get.dart';
 import 'package:tugas_apptodo/color/app_colors.dart';
 import 'package:tugas_apptodo/controllers/ProfileController.dart';
 
-class ProfileMobile extends StatefulWidget {
+class ProfileMobile extends StatelessWidget {
   const ProfileMobile({super.key});
 
   @override
-  State<ProfileMobile> createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfileMobile> {
-  final PageController _pageController = PageController();
-  int _currentIndex = 0;
-
-  final List<Map<String, String>> profiles = [
-    {
-      'name': 'Salahaddin Alnieto R.',
-      'email': 'alnieto7170@gmail.com',
-      'class': '11 PPLG 2 (30)',
-      'image': 'assets/images/tito.jpg',
-    },
-    {
-      'name': 'Andrean Awan',
-      'email': 'andreanawan634@gmail.com',
-      'class': '11 PPLG 2 (7)',
-      'image': 'assets/images/awan.jpg',
-    },
-  ];
-
-  @override
   Widget build(BuildContext context) {
-    final profileC = Get.put(ProfileController());
+    final controller = Get.find<ProfileController>();
 
     return Scaffold(
       appBar: AppBar(
@@ -41,48 +18,42 @@ class _ProfilePageState extends State<ProfileMobile> {
       ),
       body: Column(
         children: [
-          // Profile indicator
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                profiles.length,
-                (index) => Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  width: 12,
-                  height: 12,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color:
-                        _currentIndex == index
-                            ? AppColors.primary
-                            : AppColors.primary.withOpacity(0.3),
+          const SizedBox(height: 16),
+
+          // 🔹 Indikator lingkaran
+          Obx(() => Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  controller.profiles.length,
+                  (index) => Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 4),
+                    width: 12,
+                    height: 12,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: controller.currentIndex.value == index
+                          ? AppColors.primary
+                          : AppColors.primary.withOpacity(0.3),
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
+              )),
 
           const SizedBox(height: 16),
 
-          // PageView for profiles
+          // 🔹 PageView untuk profil
           Expanded(
             child: PageView.builder(
-              controller: _pageController,
-              onPageChanged: (index) {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
-              itemCount: profiles.length,
+              controller: controller.pageController,
+              onPageChanged: controller.onPageChanged,
+              itemCount: controller.profiles.length,
               itemBuilder: (context, index) {
-                final profile = profiles[index];
+                final profile = controller.profiles[index];
                 return Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Profile Avatar with shadow
+                      // Foto profil
                       Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
@@ -103,7 +74,7 @@ class _ProfilePageState extends State<ProfileMobile> {
 
                       const SizedBox(height: 20),
 
-                      // Profile Info Card
+                      // Kartu info profil
                       Container(
                         margin: const EdgeInsets.symmetric(horizontal: 24),
                         padding: const EdgeInsets.all(20),
@@ -141,8 +112,6 @@ class _ProfilePageState extends State<ProfileMobile> {
                           ],
                         ),
                       ),
-
-                      const SizedBox(height: 40),
                     ],
                   ),
                 );
@@ -150,16 +119,17 @@ class _ProfilePageState extends State<ProfileMobile> {
             ),
           ),
 
-          // Profile counter at bottom
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: Text(
-              "${_currentIndex + 1} dari ${profiles.length} profil",
-              style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-            ),
-          ),
+          const SizedBox(height: 10),
 
-          // Logout Button - Single button for all profiles
+          // 🔹 Teks “x dari y profil”
+          Obx(() => Text(
+                "${controller.currentIndex.value + 1} dari ${controller.profiles.length} profil",
+                style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+              )),
+
+          const SizedBox(height: 20),
+
+          // 🔹 Tombol logout
           Padding(
             padding: const EdgeInsets.only(bottom: 30, left: 24, right: 24),
             child: ElevatedButton(
@@ -182,9 +152,7 @@ class _ProfilePageState extends State<ProfileMobile> {
                   textCancel: "Batal",
                   textConfirm: "Logout",
                   confirmTextColor: AppColors.white,
-                  onConfirm: () {
-                    profileC.logout();
-                  },
+                  onConfirm: controller.logout,
                 );
               },
               child: const Text(
@@ -200,11 +168,5 @@ class _ProfilePageState extends State<ProfileMobile> {
         ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
   }
 }

@@ -27,7 +27,7 @@ class ProfileWide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary,
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         title: const Text("Profile (Tablet)"),
         backgroundColor: AppColors.primary,
@@ -49,9 +49,7 @@ class ProfileWide extends StatelessWidget {
                   ),
                   title: Text(
                     profile['name']!,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                   subtitle: Text(profile['email']!),
                   onTap: () {

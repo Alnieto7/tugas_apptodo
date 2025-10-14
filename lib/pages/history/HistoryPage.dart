@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:tugas_apptodo/controllers/TodoController.dart';
 import 'package:tugas_apptodo/pages/history/HistoryMobile.dart';
 import 'package:tugas_apptodo/pages/history/HistoryWide.dart';
