@@ -27,7 +27,6 @@ class Homewide extends StatelessWidget {
 
             final sortedTodos = [...todoC.pendingTodos, ...todoC.doneTodos];
 
-            // ✅ Versi Tablet: Grid 2 kolom | Versi Mobile: List biasa
             final listWidget = isTablet
                 ? GridView.count(
                     crossAxisCount: 2,
@@ -62,7 +61,6 @@ class Homewide extends StatelessWidget {
     );
   }
 
-  // ✅ UI Card tanpa logic baru
   Widget _buildTodoCard(BuildContext context, TodoController todoC, dynamic todo) {
     return Dismissible(
       key: Key(todo.id),
@@ -107,7 +105,6 @@ class Homewide extends StatelessWidget {
       },
       onDismissed: (_) => todoC.deleteTodo(todo.id),
 
-      // ✅ Tampilan Card
       child: Card(
         color: todo.isDone ? Colors.grey[200] : Colors.white,
         elevation: 3,
