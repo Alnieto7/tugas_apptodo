@@ -3,13 +3,13 @@ import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
 import '../models/todo_model.dart';
 import '../Db/db_helper.dart';
+import '../routes/routes.dart';
 
 class TodoController extends GetxController {
   final todos = <TodoModel>[].obs;
   final dbHelper = DatabaseHelper();
 
-  var isMobile = true
-      .obs; 
+  var isMobile = true.obs;
 
   void updateLayout(BoxConstraints constraints) {
     isMobile.value = constraints.maxWidth < 600;
@@ -21,11 +21,13 @@ class TodoController extends GetxController {
     loadTodos();
   }
 
+  // ✅ Ambil semua todo dari database
   Future<void> loadTodos() async {
     final data = await dbHelper.getTodos();
     todos.assignAll(data);
   }
 
+  // ✅ Tambah todo baru
   Future<void> addTodo(
     String title,
     String description,
@@ -45,6 +47,7 @@ class TodoController extends GetxController {
     todos.insert(0, todo);
   }
 
+  // ✅ Update status done / undone
   Future<void> toggleDone(String id) async {
     final idx = todos.indexWhere((t) => t.id == id);
     if (idx >= 0) {
@@ -63,11 +66,19 @@ class TodoController extends GetxController {
     }
   }
 
+  // ✅ Hapus todo
   Future<void> deleteTodo(String id) async {
     await dbHelper.deleteTodo(id);
     todos.removeWhere((t) => t.id == id);
+    Get.snackbar(
+      "Dihapus",
+      "Todo berhasil dihapus",
+      snackPosition: SnackPosition.BOTTOM,
+      backgroundColor: Colors.red.withOpacity(0.1),
+    );
   }
 
+  // ✅ Edit todo
   Future<void> editTodo(
     String id,
     String newTitle,
@@ -92,6 +103,46 @@ class TodoController extends GetxController {
     }
   }
 
+  // ✅ Pisahkan todo yang sudah dan belum selesai
   List<TodoModel> get doneTodos => todos.where((t) => t.isDone).toList();
   List<TodoModel> get pendingTodos => todos.where((t) => !t.isDone).toList();
+
+  // ✅ Navigasi ke halaman tambah todo
+  void goToAddTodo() {
+    Get.toNamed(AppRoutes.addtodo);
+  }
+
+  // ✅ Navigasi ke halaman edit todo
+  void goToEdit(dynamic todo) {
+    Get.toNamed(AppRoutes.addtodo, arguments: {
+      "isEdit": true,
+      "todoId": todo.id,
+      "title": todo.title,
+      "description": todo.description,
+      "category": todo.category,
+      "date": todo.date,
+      "time": todo.time,
+    });
+  }
+
+  // ✅ Dialog konfirmasi hapus
+  Future<bool?> confirmDeleteDialog(String id) {
+    return Get.dialog(
+      AlertDialog(
+        title: const Text("Konfirmasi"),
+        content: const Text("Yakin ingin menghapus todo ini?"),
+        actions: [
+          TextButton(
+            onPressed: () => Get.back(result: false),
+            child: const Text("Batal"),
+          ),
+          ElevatedButton(
+            onPressed: () => Get.back(result: true),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+            child: const Text("Hapus"),
+          ),
+        ],
+      ),
+    );
+  }
 }
