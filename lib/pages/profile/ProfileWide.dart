@@ -6,23 +6,7 @@ import 'package:tugas_apptodo/controllers/ProfileController.dart';
 class ProfileWide extends StatelessWidget {
   ProfileWide({super.key});
 
-  final PageController _pageController = PageController();
   final controller = Get.put(ProfileController());
-
-  final List<Map<String, String>> profiles = [
-    {
-      'name': 'Salahaddin Alnieto R.',
-      'email': 'alnieto7170@gmail.com',
-      'class': '11 PPLG 2 (30)',
-      'image': 'assets/images/tito.jpg',
-    },
-    {
-      'name': 'Andrean Awan',
-      'email': 'andreanawan634@gmail.com',
-      'class': '11 PPLG 2 (7)',
-      'image': 'assets/images/awan.jpg',
-    },
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +19,14 @@ class ProfileWide extends StatelessWidget {
       ),
       body: Row(
         children: [
-          // Sidebar List
+          // ✅ Sidebar
           Container(
             width: 280,
             color: AppColors.primary.withOpacity(0.05),
             child: ListView.builder(
-              itemCount: profiles.length,
+              itemCount: controller.profiles.length,
               itemBuilder: (context, index) {
-                final profile = profiles[index];
+                final profile = controller.profiles[index];
                 return ListTile(
                   leading: CircleAvatar(
                     backgroundImage: AssetImage(profile['image']!),
@@ -52,31 +36,25 @@ class ProfileWide extends StatelessWidget {
                     style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                   subtitle: Text(profile['email']!),
-                  onTap: () {
-                    _pageController.animateToPage(
-                      index,
-                      duration: const Duration(milliseconds: 400),
-                      curve: Curves.easeInOut,
-                    );
-                  },
+                  onTap: () => controller.goToPage(index),
                 );
               },
             ),
           ),
 
-          // Profile Detail
+          // ✅ Detail Profil
           Expanded(
             child: PageView.builder(
-              controller: _pageController,
-              itemCount: profiles.length,
+              controller: controller.pageController,
+              itemCount: controller.profiles.length,
+              onPageChanged: controller.onPageChanged,
               itemBuilder: (context, index) {
-                final profile = profiles[index];
+                final profile = controller.profiles[index];
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Profile Image
                       CircleAvatar(
                         radius: 80,
                         backgroundImage: AssetImage(profile['image']!),
@@ -143,18 +121,7 @@ class ProfileWide extends StatelessWidget {
                           ),
                           elevation: 3,
                         ),
-                        onPressed: () {
-                          Get.defaultDialog(
-                            title: "Konfirmasi",
-                            middleText: "Apakah kamu yakin ingin logout?",
-                            textCancel: "Batal",
-                            textConfirm: "Logout",
-                            confirmTextColor: AppColors.white,
-                            onConfirm: () {
-                              controller.logout();
-                            },
-                          );
-                        },
+                        onPressed: controller.showLogoutDialog,
                         child: const Text(
                           "Logout",
                           style: TextStyle(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tugas_apptodo/routes/routes.dart';
+import '../color/app_colors.dart';
 
 class ProfileController extends GetxController {
   final PageController pageController = PageController();
@@ -28,10 +29,33 @@ class ProfileController extends GetxController {
     isMobile.value = constraints.maxWidth < 600;
   }
 
-  void onPageChanged(int index) {
+  // ✅ Fungsi pindah halaman
+  void goToPage(int index) {
+    pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 400),
+      curve: Curves.easeInOut,
+    );
     currentIndex.value = index;
   }
 
+   void onPageChanged(int index) {
+    currentIndex.value = index;
+  }
+
+  // ✅ Dialog konfirmasi logout
+  void showLogoutDialog() {
+    Get.defaultDialog(
+      title: "Konfirmasi",
+      middleText: "Apakah kamu yakin ingin logout?",
+      textCancel: "Batal",
+      textConfirm: "Logout",
+      confirmTextColor: AppColors.white,
+      onConfirm: logout,
+    );
+  }
+
+  // ✅ Fungsi logout
   Future<void> logout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
