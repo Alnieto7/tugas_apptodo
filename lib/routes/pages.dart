@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:tugas_apptodo/bindings/Splashscreen_Binding.dart';
+import 'package:tugas_apptodo/bindings/profile_binding.dart';
 import 'package:tugas_apptodo/pages/DashboardPage.dart';
-import 'package:tugas_apptodo/pages/home/HomeMobile.dart';
-import 'package:tugas_apptodo/pages/login/LoginMobile.dart';
 import 'package:tugas_apptodo/pages/Splashscreen.dart';
 import 'package:tugas_apptodo/pages/TodoPage.dart';
 import 'package:tugas_apptodo/pages/home/HomePage.dart';
 import 'package:tugas_apptodo/pages/login/LoginPage.dart';
+import 'package:tugas_apptodo/pages/profile/ProfilePage.dart';
 import 'package:tugas_apptodo/routes/routes.dart';
 import '../bindings/auth_binding.dart';
 import '../bindings/home_binding.dart';
@@ -19,5 +19,6 @@ GetPage(name: AppRoutes.login, page: () => LoginPage(), binding: AuthBinding()),
 GetPage(name: AppRoutes.dashboard, page: () => DashboardPage(), binding: HomeBinding()),
 GetPage(name: AppRoutes.addtodo, page: () => AddTodoPage(), binding: HomeBinding()),
 GetPage(name: AppRoutes.home, page: () => Homepage(), binding: HomeBinding()),
+GetPage(name: AppRoutes.profile, page: () => ProfilePage(), binding: ProfileBinding()),
 ];
 }

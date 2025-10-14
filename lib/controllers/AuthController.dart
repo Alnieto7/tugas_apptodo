@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tugas_apptodo/pages/DashboardPage.dart';
-import 'package:tugas_apptodo/pages/login/LoginMobile.dart';
 import 'package:tugas_apptodo/routes/routes.dart';
 
 class AuthController extends GetxController {
