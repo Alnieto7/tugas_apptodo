@@ -21,7 +21,6 @@ class HomeMobile extends StatelessWidget {
           return const Center(child: Text("Belum ada tugas"));
         }
 
-        
         final sortedTodos = [...todoC.pendingTodos, ...todoC.doneTodos];
 
         return ListView.builder(
@@ -52,27 +51,7 @@ class HomeMobile extends StatelessWidget {
                   ],
                 ),
               ),
-              confirmDismiss: (_) async {
-                return await Get.dialog(
-                  AlertDialog(
-                    title: const Text("Konfirmasi"),
-                    content: const Text("Yakin ingin menghapus todo ini?"),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Get.back(result: false),
-                        child: const Text("Batal"),
-                      ),
-                      ElevatedButton(
-                        onPressed: () => Get.back(result: true),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-                        ),
-                        child: const Text("Hapus"),
-                      ),
-                    ],
-                  ),
-                );
-              },
+              confirmDismiss: (_) => todoC.confirmDeleteDialog(todo.id),
               onDismissed: (_) => todoC.deleteTodo(todo.id),
 
               // Card UI
@@ -147,23 +126,9 @@ class HomeMobile extends StatelessWidget {
                         ),
                       ),
 
-                  
                       IconButton(
                         icon: const Icon(Icons.edit, color: Colors.blue),
-                        onPressed: () {
-                          Get.toNamed(
-                            AppRoutes.addtodo,
-                            arguments: {
-                              "isEdit": true,
-                              "todoId": todo.id,
-                              "title": todo.title,
-                              "description": todo.description,
-                              "category": todo.category,
-                              "date": todo.date,
-                              "time": todo.time,
-                            },
-                          );
-                        },
+                        onPressed: () => todoC.goToEdit(todo),
                       ),
                     ],
                   ),
